@@ -1,0 +1,6 @@
+1. GO for URL shortening and making the RESTful API that performs the shortening service. Using Redis DB for persisting the URLs that have been shortened.
+2. Dockerise the application (Dockerfiles for api and redis db and then compose them).
+3. A front end form page that takes in a URL and shortens it and lets the User copy the URL. - in HTML, CSS and FLask 
+
+
+First implementing the API and testing it using CURL from cmd
