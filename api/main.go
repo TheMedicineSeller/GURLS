@@ -1,18 +1,17 @@
 package main
 
 import (
-    "net/http"
-    "log"
-    "github.com/gin-gonic/gin"
-    "github.com/TheMedicineSeller/GURLS/db"
+	"github.com/TheMedicineSeller/GURLS/config"
+	"github.com/TheMedicineSeller/GURLS/routes"
+	"github.com/gin-gonic/gin"
 )
 
 // Define endpoints for app and attach corresponding functions to the endpoints with the right method
 
-func main () {
-	database, err := db.CreateNewDB(RedisAddr)
-	if err != nil {
-	    log.Fatalf("Redis connection failed : %s", err.Error())
-	}
-}
+func main() {
+	app := gin.Default()
+	app.GET("/:url", routes.ResolveURL)
+	app.POST("/api", routes.ShortenURL)
 
+	app.Run(config.PORT)
+}
