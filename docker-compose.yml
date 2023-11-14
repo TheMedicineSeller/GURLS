@@ -1,0 +1,16 @@
+version: '3' # usual version
+# 2 services -> API (running server) & db (running redis)
+
+services:
+  api:
+    build: api
+    ports:
+      - "3000:3000" # port forwarding
+    depends_on:
+      - db
+  db:
+    build: db
+    ports:
+      - "6379:6379"
+    volumes: # A volume for db to persist the data that redis gets
+      - .data:/data
